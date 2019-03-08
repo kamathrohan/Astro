@@ -19,17 +19,15 @@ em.edgemasking(image,0,4611,2470,2570)
 em.edgemasking(image,4511,4611,0,2570)
 
 
-kernel = (1/25)*np.array([[0,0,0,0,0],[0,0,0,0,0],[5,5,5,5,5],[0,0,0,0,0],[0,0,0,0,0]])
-dst = cv2.GaussianBlur(img, (5,5),0)
-dst = cv2.filter2D(image,-1,kernel)
-
-
-
-edges = cv2.Canny(dst,0,5)
+kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE,(10,10))
+#kernel = cv2.getGaussianKernel(50,1)
+erosion = cv2.erode(image,kernel,iterations = 5)
+erosion = np.uint8(erosion)
+edges = cv2.Canny(erosion,200,300)
 
 plt.subplot(121),plt.imshow(image,cmap = 'gray')
 plt.title('Original Image'), plt.xticks([]), plt.yticks([])
-plt.subplot(122),plt.imshow(edges,cmap = 'gray')
+plt.subplot(122),plt.imshow(erosion,cmap = 'gray')
 plt.title('Edge Image'), plt.xticks([]), plt.yticks([])
 
 plt.show()
