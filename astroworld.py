@@ -2,6 +2,7 @@ import numpy as np
 from astropy.io import fits
 import cv2
 import matplotlib.pyplot as plt
+#import skimage as sk
 
 
 
@@ -12,30 +13,27 @@ hdulist = fits.open("A1_mosaic.fits")
 image = hdulist[0].data
 hist = np.sum(image, axis = 0)
 print(np.argmax(hist))
-plt.plot(hist)
-plt.show()
-#image_info = hdulist.info()
-
-"""
-
 img = cv2.imread("galaxies.jpeg")
 
-print(img)
+
+x, y = np.mgrid[:image.shape[0], :image.shape[1]]
+
+print(x,y)
+
+
 kernel = (1/25)*np.array([[0,0,0,0,0],[0,0,0,0,0],[5,5,5,5,5],[0,0,0,0,0],[0,0,0,0,0]])
-dst = cv2.GaussianBlur(img, (5,5),0)
-dst = cv2.filter2D(img,-1,kernel)
+
+edges = cv2.Canny(img,50,np.inf)
 
 
-<<<<<<< HEAD
-=======
 
-edges = cv2.Canny(dst,0,5)
 
->>>>>>> 597a47b75c3c24586a46d910791dfbfd12552dee
+
+plt.plot(hist)
+plt.title('Histogram')
 plt.subplot(121),plt.imshow(img,cmap = 'gray')
 plt.title('Original Image'), plt.xticks([]), plt.yticks([])
 plt.subplot(122),plt.imshow(edges,cmap = 'gray')
 plt.title('Edge Image'), plt.xticks([]), plt.yticks([])
 
 plt.show()
-"""
