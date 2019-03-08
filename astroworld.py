@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 
 
 
+
+
 hdulist = fits.open("A1_mosaic.fits")
 
 image = hdulist[0].data
@@ -14,7 +16,6 @@ edges = cv2.Canny(img,0,np.inf)
 
 
 print(image_info)
-
 
 plt.subplot(121),plt.imshow(img,cmap = 'gray')
 plt.title('Original Image'), plt.xticks([]), plt.yticks([])
