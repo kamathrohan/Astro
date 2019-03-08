@@ -17,15 +17,18 @@ def edgemasking(data,xstart,xend,ystart,yend):
         for j in range(ystart,yend):
             data[i][j] = 0
     return
-
-
+"""
 hdulist = fits.open("A1_mosaic.fits")
 image = hdulist[0].data
 print(np.shape(image))
-edgemasking(image,0,4611,0,100)
-edgemasking(image,0,4611,2470,2570)
-edgemasking(image,4511,4611,0,2570)
+
 
 #edgemasking(image,)
 plt.imshow(image)
 plt.show()
+
+"""
+
+
+
+
