@@ -10,17 +10,18 @@ hdulist = fits.open("A1_mosaic.fits")
 image = hdulist[0].data
 image_info = hdulist.info()
 img = cv2.imread("galaxies.jpeg")
-edges = cv2.Canny(img,0,np.inf)
+
+print(img)
+kernel = (1/25)*np.array([[0,0,0,0,0],[0,0,0,0,0],[5,5,5,5,5],[0,0,0,0,0],[0,0,0,0,0]])
+dst = cv2.filter2D(img,-1,kernel)
 
 
-print(image_info)
 
+edges = cv2.Canny(dst,0,5)
 
 plt.subplot(121),plt.imshow(img,cmap = 'gray')
 plt.title('Original Image'), plt.xticks([]), plt.yticks([])
-plt.subplot(122),plt.imshow(edges,cmap = 'gray')
-plt.title('Edge Image'), plt.xticks([]), plt.yticks([])
+plt.subplot(122),plt.imshow(edgecks([]), plt.yticks([])
 
-plt.show()
-
-#def maskedges(xstart,xend,ystart,yend,image):
+plt.show()s,cmap = 'gray')
+plt.title('Edge Image'), plt.xti
