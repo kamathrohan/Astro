@@ -34,7 +34,17 @@ def backgrounddetection(data,threshold):
             if image[i][j] <= threshold:
                 image[i][j] = 0
     return image
-
+def backgroundremoval(data,threshold):
+    """
+    :param data: image whose background is to be removed (2D array)
+    :param threshold: threshold below whoch something is the background
+    :return:
+    """
+    image = np.copy(data)
+    for i in tqdm(range(np.shape(image)[0])):
+        for j in range(np.shape(image)[1]):
+            image[i][j]  = data[i][j] - threshold
+    return image
 def logcorrected(data):
     """
     :param data: image which is to be log corrected
