@@ -22,12 +22,10 @@ def edgemasking(data,xstart,xend,ystart,yend):
 
 def backgrounddetection(data,threshold):
     """
-
     :param data: image whose background is to be removed (2D array)
     :param threshold: threshold below whoch something is the background
     :return:
     """
-
     image = np.copy(data)
     for i in range(np.shape(image)[0]):
         for j in range(np.shape(image)[1]):
