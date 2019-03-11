@@ -35,7 +35,17 @@ def backgrounddetection(data,threshold):
                 image[i][j] = 0
     return image
 
+def logcorrected(data):
+    """
 
+    :param data: image which is to be log corrected
+    :return: log corrected image
+    """
+    image = np.copy(data)
+    for i in range(np.shape(image)[0]):
+        for j in range(np.shape(image)[1]):
+            image[i][j] = np.log10(data[i][j])
+    return image
 
 
 
