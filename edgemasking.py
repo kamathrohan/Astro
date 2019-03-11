@@ -89,6 +89,6 @@ def sourcedetection(image, threshold = 3421, sigma = 0.01):
     imageslice = backgroundremoval(image, threshold)
     kernel = np.ones((5, 5), np.uint8)
     closing = cv2.morphologyEx(imageslice, cv2.MORPH_CLOSE, kernel)
-    edges = em.auto_canny(np.uint8(closing), sigma)
+    edges = auto_canny(np.uint8(closing), sigma)
 
     return edges
