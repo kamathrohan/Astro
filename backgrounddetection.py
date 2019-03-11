@@ -11,5 +11,5 @@ image = hdulist[0].data
 
 for i in image:
     for j in i:
-        if j > 4000:
+        if j > 3421:
             j = 0
