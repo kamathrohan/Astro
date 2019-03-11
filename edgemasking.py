@@ -13,21 +13,28 @@ def edgemasking(data,xstart,xend,ystart,yend):
     :param yend: last value of edges (x axis)
     :return: masked image
     """
+    array = np.copy(data)
     for i in range(xstart,xend):
         for j in range(ystart,yend):
-            data[i][j] = 0
-    return
-"""
-hdulist = fits.open("A1_mosaic.fits")
-image = hdulist[0].data
-print(np.shape(image))
+            array[i][j] = 0
+    return array
 
 
-#edgemasking(image,)
-plt.imshow(image)
-plt.show()
+def backgrounddetection(data,threshold):
+    """
 
-"""
+    :param data: image whose background is to be removed (2D array)
+    :param threshold: threshold below whoch something is the background
+    :return:
+    """
+
+    image = np.copy(data)
+    for i in range(np.shape(image)[0]):
+        for j in range(np.shape(image)[1]):
+            if image[i][j] < threshold:
+                image[i][j] = 0
+    return image
+
 
 
 
