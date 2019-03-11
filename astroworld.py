@@ -9,14 +9,8 @@ hdulist = fits.open("A1_mosaic.fits")
 
 image = hdulist[0].data
 
-
-#print(image.shape)
-newimage = em.backgroundremoval(image,3421)
-plt.imshow(newimage)
-plt.show()
-
-#mask edges of image "region_3"
-newimage = em.edgemasking(newimage,0,4611,0,100)
+#mask edges of image "region_5"
+newimage = em.edgemasking(image,0,4611,0,100)
 newimage = em.edgemasking(newimage,0,4611,2470,2570)
 newimage = em.edgemasking(newimage,4511,4611,0,2570)
 
@@ -26,25 +20,12 @@ region_2 = newimage[0:4611, 1410:1460] #bleeding line from main star
 region_3 = newimage[2100:2450,600:1100] #stars region 1
 region_4 = newimage[3000:3900, 2100:2400] #stars region 2
 
+edges_1 = em.sourcedetection(region_1)
+edges_2 = em.sourcedetection(region_2)
+edges_3 = em.sourcedetection(region_3)
+edges_4 = em.sourcedetection(region_4)
 
-
-
-
-kernel = np.ones((5,5),np.uint8)
-closing = cv2.morphologyEx(region_1, cv2.MORPH_CLOSE, kernel)
-edges = em.auto_canny(np.uint8(closing), 0.01)
-plt.imshow(edges)
-plt.title('Edge Image'), plt.xticks([]), plt.yticks([])
+plt.imshow(region_3)
 plt.show()
-
-
-"""
-#plt.plot(hist)
-#plt.title('Histogram')
-plt.subplot(121),plt.imshow(image,cmap = 'gray')
-plt.title('Original Image'), plt.xticks([]), plt.yticks([])
-plt.subplot(122),plt.imshow(edges,cmap = 'gray')
-plt.title('Edge Image'), plt.xticks([]), plt.yticks([])
-
+plt.imshow(edges_3)
 plt.show()
-"""
