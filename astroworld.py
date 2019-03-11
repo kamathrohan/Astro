@@ -14,36 +14,31 @@ image = hdulist[0].data
 
 
 print(image.shape)
-newimage = em.backgrounddetection(image,4000)
+#newimage = em.backgrounddetection(image,3421)
 
 #random data split
 data_split = image[300:600,300:600]
 
-"""
-plt.imshow(data_split)
-plt.show()
-"""
-
-
-mask = em.edgemasking(image,0,4611,0,111)
-#plt.imshow(mask)
-#plt.show()
 
 
 #Edges removal
+newimage= em.backgrounddetection(image, 3421)
+plt.imshow(newimage)
+plt.show()
+
 
 newimage = em.edgemasking(newimage,0,4611,0,100)
 newimage = em.edgemasking(newimage,0,4611,2470,2570)
 newimage = em.edgemasking(newimage,4511,4611,0,2570)
 
 
-#background subtraction
+#log correction
+#img = em.logcorrected(np.uint8(newimage))
 
+kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3,3))
+#erosion = cv2.erode(image, kernel, iterations = 1)
+edges = em.auto_canny(np.uint8(newimage))
 
-corrected_image = em.backgrounddetection(newimage, 3421)
-
-
-edges = cv2.Canny(np.uint8(corrected_image),100,500)
 
 
 #plt.plot(hist)
