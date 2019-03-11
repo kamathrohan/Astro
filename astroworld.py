@@ -23,7 +23,8 @@ data_split = image[300:600,300:600]
 
 #Edges removal
 newimage= em.backgrounddetection(image, 3421)
-plt.imshow(newimage)
+subtracted = image - newimage
+plt.imshow(subtracted)
 plt.show()
 
 
@@ -38,6 +39,7 @@ newimage = em.edgemasking(newimage,4511,4611,0,2570)
 kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3,3))
 #erosion = cv2.erode(image, kernel, iterations = 1)
 edges = em.auto_canny(np.uint8(newimage))
+
 
 
 
