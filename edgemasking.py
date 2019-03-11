@@ -16,8 +16,8 @@ def edgemasking(data,xstart,xend,ystart,yend):
     :return: masked image
     """
     array = np.copy(data)
-    for i in tqdm(range(xstart,xend)):
-        for j in tqdm(range(ystart,yend)):
+    for i in range(xstart,xend):
+        for j in range(ystart,yend):
             array[i][j] = 0
     return array
 
@@ -29,7 +29,7 @@ def backgrounddetection(data,threshold):
     :return:
     """
     image = np.copy(data)
-    for i in tqdm(range(np.shape(image)[0])):
+    for i in range(np.shape(image)[0]):
         for j in range(np.shape(image)[1]):
             if image[i][j] < threshold:
                 image[i][j] = 0
@@ -43,7 +43,7 @@ def backgroundremoval(data,threshold):
     :return:
     """
     image = np.copy(data)
-    for i in tqdm(range(np.shape(image)[0])):
+    for i in range(np.shape(image)[0]):
         for j in range(np.shape(image)[1]):
             image[i][j]  = data[i][j] - threshold
     return image
@@ -54,7 +54,7 @@ def logcorrected(data):
     :return: log corrected image
     """
     image = np.copy(data)
-    for i in tqdm(range(np.shape(image)[0])):
+    for i in range(np.shape(image)[0]):
         for j in range(np.shape(image)[1]):
             if data[i][j] == 0 :
                 image[i][j] = 0
@@ -65,7 +65,6 @@ def logcorrected(data):
 
 def auto_canny(image, sigma=0.33):
     """
-
     :param image:
     :param sigma:
     :return:

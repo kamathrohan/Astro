@@ -4,6 +4,7 @@ import cv2
 import matplotlib.pyplot as plt
 import edgemasking as em
 
+np.set_printoptions(threshold=np.nan)
 
 hdulist = fits.open("A1_mosaic.fits")
 
@@ -25,7 +26,26 @@ edges_2 = em.sourcedetection(region_2)
 edges_3 = em.sourcedetection(region_3)
 edges_4 = em.sourcedetection(region_4)
 
-plt.imshow(region_3)
-plt.show()
-plt.imshow(edges_3)
-plt.show()
+
+"""
+Obtaining contours and finding max contour by area and fitting to polygon
+"""
+
+im2, contours, hierarchy = cv2.findContours(edges_3.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+#areas = [cv2.contourArea(c) for c in contours] # get the area of each contour
+#min_index = np.argmin(areas) # get the index of the largest contour by area
+cnts = contours
+for c in range(len(cnts)):
+    cnts = contours[c] # get the largest contout by area
+    cv2.drawContours(edges_3, [cnts], 0, (0,255,0), 3) # Draw the contours to the mask image
+    x,y,w,h = cv2.boundingRect(cnts) #  get the bouding box information about the contour
+    cv2.rectangle(edges_3,(x,y),(x+w,y+h),(255,255,255),2) # Draw rectangle on the image to represent the bounding box
+    cv2.imshow("debug.", edges_3)
+    cv2.waitKey()
+
+
+"""
+Useful websites:
+https://www.programcreek.com/python/example/70455/cv2.drawContours
+http://answers.opencv.org/question/120499/how-to-eliminate-small-contours-in-a-binary-image/
+"""
