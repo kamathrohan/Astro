@@ -64,8 +64,31 @@ def logcorrected(data):
 
 
 def auto_canny(image, sigma=0.33):
+    """
+
+    :param image:
+    :param sigma:
+    :return:
+    """
+
     v = np.median(image)
     lower = int(max(0, (1.0 - sigma) * v))
     upper = int(min(65536, (1.0 + sigma) * v))
     edges = cv2.Canny(image, lower, upper)
+    return edges
+
+
+def sourcedetection(image, threshold = 3421, sigma = 0.01):
+    """
+
+    :param image: image to find edges from
+    :param threshold: background threshold to blanket subtract
+    :param sigma: for autocanny
+    :return:
+    """
+    imageslice = backgroundremoval(image, threshold)
+    kernel = np.ones((5, 5), np.uint8)
+    closing = cv2.morphologyEx(imageslice, cv2.MORPH_CLOSE, kernel)
+    edges = em.auto_canny(np.uint8(closing), sigma)
+
     return edges
