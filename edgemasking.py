@@ -31,7 +31,7 @@ def backgrounddetection(data,threshold):
     image = np.copy(data)
     for i in tqdm(range(np.shape(image)[0])):
         for j in range(np.shape(image)[1]):
-            if image[i][j] <= threshold:
+            if image[i][j] < threshold:
                 image[i][j] = 0
     return image
 
