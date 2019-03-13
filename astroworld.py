@@ -36,7 +36,7 @@ im2, contours, hierarchy = cv2.findContours(edges_3.copy(), cv2.RETR_EXTERNAL, c
 #min_index = np.argmin(areas) # get the index of the largest contour by area
 cnts = contours
 for c in range(len(cnts)):
-    cnts = contours[c] # get the largest contout by area
+    cnts = contours[c] # get the largest contour by area
     cv2.drawContours(edges_3, [cnts], 0, (0,255,0), 3) # Draw the contours to the mask image
     x,y,w,h = cv2.boundingRect(cnts) #  get the bouding box information about the contour
     cv2.rectangle(edges_3,(x,y),(x+w,y+h),(255,255,255),2) # Draw rectangle on the image to represent the bounding box
