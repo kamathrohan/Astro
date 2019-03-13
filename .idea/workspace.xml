@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf3e9fbb-fdfa-4c04-9571-181d78e1019a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/edgemasking.py" beforeDir="false" afterPath="$PROJECT_DIR$/edgemasking.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,7 +48,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/crap.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
@@ -61,11 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/edgemasking.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="110" column="16" lean-forward="true" selection-start-line="110" selection-start-column="16" selection-end-line="110" selection-end-column="16" />
+            <state relative-caret-position="359">
+              <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -96,8 +95,8 @@
         <option value="$PROJECT_DIR$/backgrounddetection.py" />
         <option value="$PROJECT_DIR$/sourcedetection.py" />
         <option value="$PROJECT_DIR$/astroworld.py" />
-        <option value="$PROJECT_DIR$/edgemasking.py" />
         <option value="$PROJECT_DIR$/crap.py" />
+        <option value="$PROJECT_DIR$/edgemasking.py" />
       </list>
     </option>
   </component>
@@ -310,7 +309,7 @@
       <workItem from="1552300057498" duration="5298000" />
       <workItem from="1552318569430" duration="4970000" />
       <workItem from="1552495235353" duration="594000" />
-      <workItem from="1552495960786" duration="2639000" />
+      <workItem from="1552495960786" duration="3081000" />
     </task>
     <task id="LOCAL-00001" summary="Added some plots">
       <created>1552039337756</created>
@@ -344,7 +343,16 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32546000" />
+    <option name="totallyTimeSpent" value="32988000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="836" extended-state="0" />
@@ -438,20 +446,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/edgemasking.py">
+    <entry file="file://$PROJECT_DIR$/crap.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="110" column="16" lean-forward="true" selection-start-line="110" selection-start-column="16" selection-end-line="110" selection-end-column="16" />
+        <state relative-caret-position="180">
+          <caret line="12" column="10" lean-forward="true" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/crap.py">
+    <entry file="file://$PROJECT_DIR$/edgemasking.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="10" lean-forward="true" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+        <state relative-caret-position="359">
+          <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

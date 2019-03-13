@@ -94,19 +94,3 @@ def sourcedetection(image, threshold = 3421, sigma = 0.01, mask = False):
 
     return edges
 
-
-def binaryconverter(data,high = 255):
-    """
-    :param data: image whose background is to be removed (2D array)
-    :param high: set the value of true
-    :return:
-    """
-    image = np.zeros(np.shape(data))
-    for i in range(np.shape(image)[0]):
-        for j in range(np.shape(image)[1]):
-            if data[i][j] == True:
-                image[i][j] = 255
-            else:
-                image[i][j] = 0
-    return image
-
