@@ -91,3 +91,5 @@ def sourcedetection(image, threshold = 3421, sigma = 0.01):
     edges = auto_canny(np.uint8(closing), sigma)
 
     return edges
+
+
