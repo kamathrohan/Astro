@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from astropy.io import fits
 from tqdm import tqdm
 import cv2 as cv2
+import scipy.ndimage.morphology as sp
 
 
 
@@ -69,7 +70,6 @@ def auto_canny(image, sigma=0.33):
     :param sigma:
     :return:
     """
-
     v = np.median(image)
     lower = int(max(0, (1.0 - sigma) * v))
     upper = int(min(65536, (1.0 + sigma) * v))
@@ -77,17 +77,22 @@ def auto_canny(image, sigma=0.33):
     return edges
 
 
-def sourcedetection(image, threshold = 3421, sigma = 0.01):
+def sourcedetection(image, threshold = 3421, sigma = 0.01, fill = False):
     """
-
     :param image: image to find edges from
     :param threshold: background threshold to blanket subtract
     :param sigma: for autocanny
     :return:
     """
-    imageslice = backgroundremoval(image, threshold)
     kernel = np.ones((5, 5), np.uint8)
-    closing = cv2.morphologyEx(imageslice, cv2.MORPH_CLOSE, kernel)
-    edges = auto_canny(np.uint8(closing), sigma)
-
+    imageslice = backgroundremoval(image, threshold)
+    dilate = cv2.dilate(imageslice, kernel)
+    erode = cv2.erode(dilate, kernel)
+    closing = cv2.morphologyEx(erode, cv2.MORPH_CLOSE, kernel)
+    blurred = cv2.GaussianBlur(closing, (5,5), 0)
+    edges = auto_canny(np.uint8(blurred), sigma)
+    if fill == True:
+        edges = 255*sp.binary_fill_holes(edges).astype(int)
     return edges
+
+def
