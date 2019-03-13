@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 from astropy.io import fits
 from tqdm import tqdm
 import cv2 as cv2
+import scipy.ndimage.morphology as sp
+
 
 
 
@@ -77,7 +79,7 @@ def auto_canny(image, sigma=0.33):
     return edges
 
 
-def sourcedetection(image, threshold = 3421, sigma = 0.01):
+def sourcedetection(image, threshold = 3421, sigma = 0.01, mask = False):
     """
 
     :param image: image to find edges from
@@ -92,4 +94,19 @@ def sourcedetection(image, threshold = 3421, sigma = 0.01):
 
     return edges
 
+
+def binaryconverter(data,high = 255):
+    """
+    :param data: image whose background is to be removed (2D array)
+    :param high: set the value of true
+    :return:
+    """
+    image = np.zeros(np.shape(data))
+    for i in range(np.shape(image)[0]):
+        for j in range(np.shape(image)[1]):
+            if data[i][j] == True:
+                image[i][j] = 255
+            else:
+                image[i][j] = 0
+    return image
 
