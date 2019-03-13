@@ -94,5 +94,3 @@ def sourcedetection(image, threshold = 3421, sigma = 0.01, fill = False):
     if fill == True:
         edges = 255*sp.binary_fill_holes(edges).astype(int)
     return edges
-
-def

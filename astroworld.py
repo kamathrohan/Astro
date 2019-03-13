@@ -21,6 +21,11 @@ region_1 = newimage[2900:3500, 1200:1700] #main star and main star diffraction
 region_2 = newimage[0:4611, 1410:1460] #bleeding line from main star
 region_3 = newimage[2100:2450,600:1100] #stars region 1
 region_4 = newimage[3000:3900, 2100:2400] #stars region 2
+"""
+
+"""
+
+
 
 
 edges_1 = em.sourcedetection(region_1)
@@ -51,9 +56,9 @@ for c in range(len(contours)):
     cv2.imshow("debug.",smooth_final)
     cv2.waitKey()
 
-
 """
 Useful websites:
 https://www.programcreek.com/python/example/70455/cv2.drawContours
 http://answers.opencv.org/question/120499/how-to-eliminate-small-contours-in-a-binary-image/
+https://docs.scipy.org/doc/scipy-0.14.0/reference/generated/scipy.ndimage.morphology.binary_fill_holes.html
 """
