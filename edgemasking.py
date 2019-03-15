@@ -94,3 +94,41 @@ def sourcedetection(image, threshold = 3421, sigma = 0.01, fill = False):
     if fill == True:
         edges = 255*sp.binary_fill_holes(edges).astype(int)
     return edges
+
+def contour_coordinates(image, all = False, Rohan = False):
+    if Rohan == True:
+        contours, hierarchy = cv2.findContours(image, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    else:
+        im, contours, hierarchy = cv2.findContours(image, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    rsx = []
+    rex = []
+    rsy = []
+    rey = []
+    if all == True:
+        for c in range(len(contours)):
+            cnts = contours[c]
+            cv2.drawContours(image, [cnts], 0, (0,255,0), 3) # Draw the contours to the mask image
+            x,y,w,h = cv2.boundingRect(cnts) #  get the bouding box information about the contour
+            rsx.append(x)
+            rex.append(x+w)
+            rsy.append(y)
+            rey.append(y+h)
+            cv2.rectangle(image,(x,y),(x+w,y+h),(255,255,255),2) # Draw rectangle on the image to represent the bounding box
+            cv2.imshow("debug.",image)
+            cv2.waitKey()
+        return rsx, rex, rsy, rey
+    else:
+        for c in range(len(contours)):
+            lengths = [cv2.arcLength(c, True) for c in contours] # get the area of each contour
+            max_index = np.argmax(lengths)
+            cnts = contours[max_index]
+            cv2.drawContours(image, [cnts], 0, (0,255,0), 3) # Draw the contours to the mask image
+            x,y,w,h = cv2.boundingRect(cnts) #  get the bouding box information about the contour
+            rsx.append(x)
+            rex.append(x+w)
+            rsy.append(y)
+            rey.append(y+h)
+            cv2.rectangle(image,(x,y),(x+w,y+h),(255,255,255),2) # Draw rectangle on the image to represent the bounding box
+            cv2.imshow("debug.",image)
+            cv2.waitKey()
+        return rsx, rex, rsy, rey
