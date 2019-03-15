@@ -132,3 +132,16 @@ def contour_coordinates(image, all = False, Rohan = False):
             cv2.imshow("debug.",image)
             cv2.waitKey()
         return rsx, rex, rsy, rey
+def fluxcalculation(data,edges):
+    """
+
+    :param data: image file
+    :param edges: edges files with 0/255
+    :return: flux count
+    """
+    flux =  0
+    for i in range(np.shape(edges)[0]):
+        for j in range(np.shape(edges)[1]):
+            if edges[i][j] == 255 :
+                flux = flux + data[i][j]
+    return flux
