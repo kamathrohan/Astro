@@ -95,7 +95,16 @@ def sourcedetection(image, threshold = 3421, sigma = 0.01, fill = False):
         edges = 255*sp.binary_fill_holes(edges).astype(int)
     return edges
 
-def contour_coordinates(image, all = False, Rohan = False, im_show = False):
+def contour_coordinates(image, all = False, Rohan = False):
+
+
+    """
+    :param image: image to find all countours in
+    :param all: if true, returns all, else returns largest one
+    :param Rohan: for rohan's computer
+    :return: list of coordinates of contours
+    """
+
     if Rohan == True:
         contours, hierarchy = cv2.findContours(image, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     else:
