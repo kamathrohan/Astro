@@ -26,19 +26,35 @@ region_4 = newimage[3000:3900, 2100:2400] #stars region 2
 
 
 
-
 edges_1 = em.sourcedetection(region_1)
 edges_2 = em.sourcedetection(region_2)
 edges_3 = em.sourcedetection(region_3)
 edges_4 = em.sourcedetection(region_4)
 
-smooth = 255*sp.binary_fill_holes(edges_3, structure=np.ones((2,2))).astype(int)
+kernel = np.ones((2,2))
+
+smooth = 255*sp.binary_fill_holes(edges_3, structure = kernel).astype(int)
 smooth_final = np.uint8(smooth)
 
 #idex 202 is main star in region 3
 
-rsx,rex,rsy,rey = em.contour_coordinates(smooth_final, all = True)
-print(rsx)
+rsx,rex,rsy,rey = em.contour_coordinates(smooth_final, all = False)
+
+
+linda = em.edgemasking(region_3, rsy[0],rey[0], rsx[0], rex[0])
+
+
+
+fig = plt.figure()
+ax1 = fig.add_subplot(2,2,1)
+ax1.imshow(edges_3, cmap = 'gray')
+ax2 = fig.add_subplot(2,2,2)
+ax2.imshow(image1, cmap = 'gray')
+ax3 = fig.add_subplot(2,2,3)
+ax3.imshow(region_3)
+ax4 = fig.add_subplot(2,2,4)
+ax4.imshow(linda)
+plt.show()
 
 
 

@@ -19,7 +19,7 @@ def edgemasking(data,xstart,xend,ystart,yend):
     array = np.copy(data)
     for i in range(xstart,xend):
         for j in range(ystart,yend):
-            array[i][j] = 0
+            array[i][j] = 3421
     return array
 
 
@@ -95,7 +95,7 @@ def sourcedetection(image, threshold = 3421, sigma = 0.01, fill = False):
         edges = 255*sp.binary_fill_holes(edges).astype(int)
     return edges
 
-def contour_coordinates(image, all = False, Rohan = False):
+def contour_coordinates(image, all = False, Rohan = False, im_show = False):
     if Rohan == True:
         contours, hierarchy = cv2.findContours(image, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     else:
@@ -114,12 +114,13 @@ def contour_coordinates(image, all = False, Rohan = False):
             rsy.append(y)
             rey.append(y+h)
             cv2.rectangle(image,(x,y),(x+w,y+h),(255,255,255),2) # Draw rectangle on the image to represent the bounding box
-            cv2.imshow("debug.",image)
-            cv2.waitKey()
+            if im_show == True:
+                cv2.imshow("debug",image)
+                cv2.waitKey()
         return rsx, rex, rsy, rey
     else:
         for c in range(len(contours)):
-            lengths = [cv2.arcLength(c, True) for c in contours] # get the area of each contour
+            lengths = [cv2.arcLength(c, True) for c in contours] # get the length of each contour
             max_index = np.argmax(lengths)
             cnts = contours[max_index]
             cv2.drawContours(image, [cnts], 0, (0,255,0), 3) # Draw the contours to the mask image
@@ -129,9 +130,11 @@ def contour_coordinates(image, all = False, Rohan = False):
             rsy.append(y)
             rey.append(y+h)
             cv2.rectangle(image,(x,y),(x+w,y+h),(255,255,255),2) # Draw rectangle on the image to represent the bounding box
-            cv2.imshow("debug.",image)
-            cv2.waitKey()
+            if im_show == True:
+                cv2.imshow("debug",image)
+                cv2.waitKey()
         return rsx, rex, rsy, rey
+
 def fluxcalculation(data,edges):
     """
 
