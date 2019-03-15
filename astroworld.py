@@ -30,15 +30,14 @@ edges_1 = em.sourcedetection(region_1)
 edges_2 = em.sourcedetection(region_2)
 edges_3 = em.sourcedetection(region_3)
 edges_4 = em.sourcedetection(region_4)
-
-kernel = np.ones((2,2))
-
-smooth = 255*sp.binary_fill_holes(edges_3, structure = kernel).astype(int)
+edges_random = em.sourcedetection(newimage[200:400,200:400],fill = True)
+smooth = 255*sp.binary_fill_holes(edges_3, structure=np.ones((2,2))).astype(int)
 smooth_final = np.uint8(smooth)
 
 #idex 202 is main star in region 3
 
-rsx,rex,rsy,rey = em.contour_coordinates(smooth_final, all = False)
+rsx,rex,rsy,rey = em.contour_coordinates(smooth_final, all = True, Rohan = True)
+print(rsx)
 
 
 linda = em.edgemasking(region_3, rsy[0],rey[0], rsx[0], rex[0])
