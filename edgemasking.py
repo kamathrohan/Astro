@@ -94,3 +94,18 @@ def sourcedetection(image, threshold = 3421, sigma = 0.01, fill = False):
     if fill == True:
         edges = 255*sp.binary_fill_holes(edges).astype(int)
     return edges
+
+def fluxcalculation(data,edges):
+    """
+    
+    :param data: image file
+    :param edges: edges files with 0/255
+    :return: flux count
+    """
+    flux =  0
+    for i in range(np.shape(edges)[0]):
+        for j in range(np.shape(edges)[1]):
+            if edges[i][j] == 255 :
+                flux = flux + data[i][j]
+    return flux
+

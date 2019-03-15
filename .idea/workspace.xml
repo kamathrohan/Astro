@@ -13,7 +13,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/AstronomicalImageProcessing$edgemasking.coverage" NAME="edgemasking Coverage Results" MODIFIED="1552042436447" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AstronomicalImageProcessing$astroworld.coverage" NAME="astroworld Coverage Results" MODIFIED="1552496315126" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/AstronomicalImageProcessing$crap.coverage" NAME="crap Coverage Results" MODIFIED="1552498765352" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AstronomicalImageProcessing$crap.coverage" NAME="crap Coverage Results" MODIFIED="1552502631563" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AstronomicalImageProcessing$sourcedetection.coverage" NAME="sourcedetection Coverage Results" MODIFIED="1552321783177" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AstronomicalImageProcessing$backgrounddetection.coverage" NAME="backgrounddetection Coverage Results" MODIFIED="1552150633734" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -213,6 +213,9 @@
       <module name="AstronomicalImageProcessing" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -275,9 +278,9 @@
     <list>
       <item itemvalue="Python.astroworld" />
       <item itemvalue="Python.backgrounddetection" />
+      <item itemvalue="Python.crap" />
       <item itemvalue="Python.edgemasking" />
       <item itemvalue="Python.sourcedetection" />
-      <item itemvalue="Python.crap" />
     </list>
     <recent_temporary>
       <list>
