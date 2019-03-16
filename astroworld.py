@@ -30,7 +30,8 @@ edges_1 = em.sourcedetection(region_1)
 edges_2 = em.sourcedetection(region_2)
 edges_3 = em.sourcedetection(region_3)
 edges_4 = em.sourcedetection(region_4)
-edges_random = em.sourcedetection(newimage[200:400,200:400],fill = True)
+edges_random = np.uint8(em.sourcedetection(newimage[200:400,200:400],fill = True))
+
 smooth = 255*sp.binary_fill_holes(edges_3, structure=np.ones((2,2))).astype(int)
 smooth_final = np.uint8(smooth)
 
@@ -48,7 +49,7 @@ fig = plt.figure()
 ax1 = fig.add_subplot(2,2,1)
 ax1.imshow(edges_3, cmap = 'gray')
 ax2 = fig.add_subplot(2,2,2)
-ax2.imshow(image1, cmap = 'gray')
+#ax2.imshow(image1, cmap = 'gray')
 ax3 = fig.add_subplot(2,2,3)
 ax3.imshow(region_3)
 ax4 = fig.add_subplot(2,2,4)
@@ -61,7 +62,7 @@ plt.show()
 """
 instrumental magnitude conversion
 1) get coordinates of boxes
-1) obtain counts whithin box
+1) obtain counts within box
 2) convert to magnitudes
 """
 """

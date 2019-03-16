@@ -6,8 +6,10 @@ import scipy.ndimage.morphology as sp
 
 hdulist = fits.open("A1_mosaic.fits")
 image = hdulist[0].data
+imageslice = image[200:500,200:300]
 
-edges = em.sourcedetection(image[200:300,200:300])
-filled = sp.binary_fill_holes(edges)
-plt.imshow(filled)
+
+print(em.fluxarray(imageslice, Rohan = True))
+
+plt.imshow(imageslice)
 plt.show()
