@@ -151,8 +151,6 @@ def fluxcalculation(data,edges):
                 flux = flux + data[i][j]
     return flux
 
-
-
 def fluxarray(image, Rohan = False, im_show = False):
 
     """
