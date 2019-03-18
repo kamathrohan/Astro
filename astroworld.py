@@ -38,7 +38,7 @@ smooth_final = np.uint8(smooth)
 
 #idex 202 is main star in region 3
 
-rsx,rex,rsy,rey = em.contour_coordinates(smooth_final, all = False)
+rsx,rex,rsy,rey = em.contour_coordinates(smooth_final, all = False , im_show = False)
 
 
 linda = em.edgemasking(region_3, rsy[0],rey[0], rsx[0], rex[0])
@@ -49,11 +49,9 @@ fig = plt.figure()
 ax1 = fig.add_subplot(2,2,1)
 ax1.imshow(edges_3, cmap = 'gray')
 ax2 = fig.add_subplot(2,2,2)
-ax2.imshow(image1, cmap = 'gray')
+ax2.imshow(region_3)
 ax3 = fig.add_subplot(2,2,3)
-ax3.imshow(region_3)
-ax4 = fig.add_subplot(2,2,4)
-ax4.imshow(linda)
+ax3.imshow(linda)
 plt.show()
 
 

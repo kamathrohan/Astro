@@ -95,7 +95,7 @@ def sourcedetection(image, threshold = 3421, sigma = 0.01, fill = False):
         edges = 255*sp.binary_fill_holes(edges).astype(int)
     return edges
 
-def contour_coordinates(image, all = False, Rohan = False):
+def contour_coordinates(image, all = False, Rohan = False, im_show = False):
 
 
     """
