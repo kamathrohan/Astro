@@ -59,7 +59,7 @@ def logcorrected(data):
                 image[i][j] = np.log(data[i][j])
     return image
 
-def auto_canny(image, sigma=0.33):
+def auto_canny(image, sigma=0.01):
     """
     :param image:
     :param sigma:
@@ -80,11 +80,11 @@ def sourcedetection(image, threshold = 3421, sigma = 0.01, fill = False):
     """
     kernel = np.ones((5, 5), np.uint8)
     imageslice = backgroundremoval(image, threshold)
-    dilate = cv2.dilate(imageslice, kernel)
-    erode = cv2.erode(dilate, kernel)
-    closing = cv2.morphologyEx(erode, cv2.MORPH_CLOSE, kernel)
-    blurred = cv2.GaussianBlur(closing, (5,5), 0)
-    edges = auto_canny(np.uint8(blurred), sigma)
+    #dilate = cv2.dilate(imageslice, kernel)
+    #erode = cv2.erode(dilate, kernel)
+    closing = cv2.morphologyEx(imageslice, cv2.MORPH_CLOSE, kernel)
+    #blurred = cv2.GaussianBlur(closing, (5,5), 0)
+    edges = auto_canny(np.uint8(closing), sigma)
     if fill == True:
         edges = 255*sp.binary_fill_holes(edges).astype(int)
     return edges
@@ -160,7 +160,7 @@ def fluxarray(image, Rohan = False):
     :return: array of flux values
     """
     edges = np.uint8(sourcedetection(image, fill=True))
-    rsx, rex, rsy, rey = contour_coordinates(edges, all=True, Rohan=Rohan)
+    rsx, rex, rsy, rey = contour_coordinates(edges, all=True, Rohan=Rohan, im_show=False)
     fluxvalues = []
     for i in range(len(rsx)):
         galaxy = image[rsy[i]:rey[i], rsx[i]:rex[i]]

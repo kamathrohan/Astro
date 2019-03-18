@@ -37,7 +37,8 @@ smooth_final = np.uint8(smooth)
 
 #idex 202 is main star in region 3
 
-rsx,rex,rsy,rey = em.contour_coordinates(smooth_final, all = False , im_show = False)
+rsx,rex,rsy,rey = em.contour_coordinates(smooth_final, all = True, Rohan = True, im_show=True)
+#print(rsx)
 
 
 linda = em.edgemasking(region_3, rsy[0],rey[0], rsx[0], rex[0])
