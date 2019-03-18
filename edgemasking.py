@@ -5,8 +5,6 @@ from tqdm import tqdm
 import cv2 as cv2
 import scipy.ndimage.morphology as sp
 
-
-
 def edgemasking(data,xstart,xend,ystart,yend):
     """
     :param data: image whose edges need to be masked
@@ -22,7 +20,6 @@ def edgemasking(data,xstart,xend,ystart,yend):
             array[i][j] = 3421
     return array
 
-
 def backgrounddetection(data,threshold):
     """
     :param data: image whose background is to be removed (2D array)
@@ -35,7 +32,6 @@ def backgrounddetection(data,threshold):
             if image[i][j] < threshold:
                 image[i][j] = 0
     return image
-
 
 def backgroundremoval(data,threshold):
     """
@@ -63,7 +59,6 @@ def logcorrected(data):
                 image[i][j] = np.log(data[i][j])
     return image
 
-
 def auto_canny(image, sigma=0.33):
     """
     :param image:
@@ -75,7 +70,6 @@ def auto_canny(image, sigma=0.33):
     upper = int(min(65536, (1.0 + sigma) * v))
     edges = cv2.Canny(image, lower, upper)
     return edges
-
 
 def sourcedetection(image, threshold = 3421, sigma = 0.01, fill = False):
     """
@@ -96,8 +90,6 @@ def sourcedetection(image, threshold = 3421, sigma = 0.01, fill = False):
     return edges
 
 def contour_coordinates(image, all = False, Rohan = False, im_show = False):
-
-
     """
     :param image: image to find all countours in
     :param all: if true, returns all, else returns largest one
@@ -157,3 +149,21 @@ def fluxcalculation(data,edges):
             if edges[i][j] == 255 :
                 flux = flux + data[i][j]
     return flux
+
+
+
+def fluxarray(image, Rohan = False):
+
+    """
+    :param image: image to find galaxy in
+    :param Rohan: is rohan using it?
+    :return: array of flux values
+    """
+    edges = np.uint8(sourcedetection(image, fill=True))
+    rsx, rex, rsy, rey = contour_coordinates(edges, all=True, Rohan=Rohan)
+    fluxvalues = []
+    for i in range(len(rsx)):
+        galaxy = image[rsy[i]:rey[i], rsx[i]:rex[i]]
+        edges = np.uint8(sourcedetection(galaxy, fill=True))
+        fluxvalues.append(fluxcalculation(galaxy, edges))
+    return fluxvalues

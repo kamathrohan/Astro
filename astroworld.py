@@ -30,10 +30,9 @@ edges_1 = em.sourcedetection(region_1)
 edges_2 = em.sourcedetection(region_2)
 edges_3 = em.sourcedetection(region_3)
 edges_4 = em.sourcedetection(region_4)
+edges_random = np.uint8(em.sourcedetection(newimage[200:400,200:400],fill = True))
 
-kernel = np.ones((2,2))
-
-smooth = 255*sp.binary_fill_holes(edges_3, structure = kernel).astype(int)
+smooth = 255*sp.binary_fill_holes(edges_3, structure=np.ones((2,2))).astype(int)
 smooth_final = np.uint8(smooth)
 
 #idex 202 is main star in region 3
@@ -60,7 +59,7 @@ plt.show()
 """
 instrumental magnitude conversion
 1) get coordinates of boxes
-1) obtain counts whithin box
+1) obtain counts within box
 2) convert to magnitudes
 """
 """
