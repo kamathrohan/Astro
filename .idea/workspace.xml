@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="bf3e9fbb-fdfa-4c04-9571-181d78e1019a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/astroworld.py" beforeDir="false" afterPath="$PROJECT_DIR$/astroworld.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/crap.py" beforeDir="false" afterPath="$PROJECT_DIR$/crap.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/edgemasking.py" beforeDir="false" afterPath="$PROJECT_DIR$/edgemasking.py" afterDir="false" />
     </list>
@@ -16,8 +15,8 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/AstronomicalImageProcessing$edgemasking.coverage" NAME="edgemasking Coverage Results" MODIFIED="1552042436447" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/AstronomicalImageProcessing$astroworld.coverage" NAME="astroworld Coverage Results" MODIFIED="1552906334640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/AstronomicalImageProcessing$crap.coverage" NAME="crap Coverage Results" MODIFIED="1552918861122" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AstronomicalImageProcessing$crap.coverage" NAME="crap Coverage Results" MODIFIED="1552919729227" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AstronomicalImageProcessing$astroworld.coverage" NAME="astroworld Coverage Results" MODIFIED="1552920178459" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AstronomicalImageProcessing$sourcedetection.coverage" NAME="sourcedetection Coverage Results" MODIFIED="1552321783177" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AstronomicalImageProcessing$backgrounddetection.coverage" NAME="backgrounddetection Coverage Results" MODIFIED="1552150633734" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -43,7 +42,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/astroworld.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
+            <state relative-caret-position="524">
               <caret line="40" column="11" selection-start-line="40" selection-start-column="11" selection-end-line="40" selection-end-column="11" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -52,20 +51,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/crap.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="7" column="23" lean-forward="true" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+            <state>
+              <caret lean-forward="true" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/edgemasking.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2370">
-              <caret line="163" selection-start-line="163" selection-end-line="163" />
+            <state relative-caret-position="399">
+              <caret line="86" column="39" selection-start-line="86" selection-start-column="39" selection-end-line="86" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -140,7 +142,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.crap">
+  <component name="RunManager" selected="Python.astroworld">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="AstronomicalImageProcessing" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -317,7 +319,7 @@
       <workItem from="1552746528067" duration="3000" />
       <workItem from="1552756660628" duration="83000" />
       <workItem from="1552902008898" duration="3250000" />
-      <workItem from="1552918342855" duration="718000" />
+      <workItem from="1552918342855" duration="1554000" />
     </task>
     <task id="LOCAL-00001" summary="Added some plots">
       <created>1552039337756</created>
@@ -351,7 +353,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42208000" />
+    <option name="totallyTimeSpent" value="43044000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -370,7 +372,7 @@
       <window_info id="Favorites" order="2" sideWeight="0.50089127" side_tool="true" weight="0.15522175" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49928468" visible="true" weight="0.33333334" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" weight="0.33333334" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39919356" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -379,13 +381,13 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.3293011" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5007153" side_tool="true" weight="0.33064517" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3293011" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3293011" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.3293011" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" sideWeight="0.94153225" visible="true" weight="0.4155937" />
-      <window_info anchor="right" x="0" y="0" width="310" height="636" id="Documentation" order="4" sideWeight="0.058467742" side_tool="true" visible="true" weight="0.4155937" />
+      <window_info anchor="right" id="SciView" order="3" sideWeight="0.94188374" visible="true" weight="0.4155937" />
+      <window_info anchor="right" x="0" y="0" width="310" height="636" id="Documentation" order="4" sideWeight="0.05811623" side_tool="true" visible="true" weight="0.4155937" />
       <window_info anchor="right" id="Database" order="5" sideWeight="0.57930106" weight="0.3297568" />
     </layout>
     <layout-to-restore>
@@ -455,8 +457,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/astroworld.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
+        <state relative-caret-position="524">
           <caret line="40" column="11" selection-start-line="40" selection-start-column="11" selection-end-line="40" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/crap.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -465,15 +477,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/edgemasking.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2370">
-          <caret line="163" selection-start-line="163" selection-end-line="163" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/crap.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="7" column="23" lean-forward="true" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+        <state relative-caret-position="399">
+          <caret line="86" column="39" selection-start-line="86" selection-start-column="39" selection-end-line="86" selection-end-column="39" />
         </state>
       </provider>
     </entry>

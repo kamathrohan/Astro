@@ -71,7 +71,7 @@ def auto_canny(image, sigma=0.01):
     edges = cv2.Canny(image, lower, upper)
     return edges
 
-def sourcedetection(image, threshold = 3421, sigma = 0.01, fill = False):
+def sourcedetection(image, threshold = 3421, sigma = 0.33, fill = False):
     """
     :param image: image to find edges from
     :param threshold: background threshold to blanket subtract
@@ -80,11 +80,11 @@ def sourcedetection(image, threshold = 3421, sigma = 0.01, fill = False):
     """
     kernel = np.ones((5, 5), np.uint8)
     imageslice = backgroundremoval(image, threshold)
-    #dilate = cv2.dilate(imageslice, kernel)
-    #erode = cv2.erode(dilate, kernel)
+    dilate = cv2.dilate(imageslice, kernel)
+    erode = cv2.erode(dilate, kernel)
     closing = cv2.morphologyEx(imageslice, cv2.MORPH_CLOSE, kernel)
-    #blurred = cv2.GaussianBlur(closing, (5,5), 0)
-    edges = auto_canny(np.uint8(closing), sigma)
+    blurred = cv2.GaussianBlur(closing, (5,5), 0)
+    edges = auto_canny(np.uint8(blurred), sigma)
     if fill == True:
         edges = 255*sp.binary_fill_holes(edges).astype(int)
     return edges
@@ -153,7 +153,7 @@ def fluxcalculation(data,edges):
 
 
 
-def fluxarray(image, Rohan = False):
+def fluxarray(image, Rohan = False, im_show = False):
 
     """
     :param image: image to find galaxy in
@@ -161,7 +161,7 @@ def fluxarray(image, Rohan = False):
     :return: array of flux values
     """
     edges = np.uint8(sourcedetection(image, fill=True))
-    rsx, rex, rsy, rey = contour_coordinates(edges, all=True, Rohan=Rohan, im_show=False)
+    rsx, rex, rsy, rey = contour_coordinates(edges, all=True, Rohan=Rohan, im_show=im_show)
     fluxvalues = []
     for i in range(len(rsx)):
         galaxy = image[rsy[i]:rey[i], rsx[i]:rex[i]]
