@@ -9,10 +9,25 @@ hdulist = fits.open("A1_mosaic.fits")
 magzpt = hdulist[0].header['MAGZPT']
 magzrr = hdulist[0].header ['MAGZRR']
 image = hdulist[0].data
-imageslice = image[200:400,200:300]
-fluxarray = em.fluxarray(imageslice)
-mags = em.magnitudes(fluxarray,magzpt)
-print(mags)
+"""
+fluxmaster = []
+for i in range(100,1500,200):
+    imageslice = image[100:300, i:i+200]
+    fluxarray = em.fluxarray(imageslice, Rohan=True, im_show=True)
+    for j in fluxarray:
+        fluxmaster.append(j)
+print(fluxmaster)
+
+"""
+
+
+
+imageslice = image[100:1000,100:1000]
+plt.imshow(imageslice)
+plt.show()
+print(em.fluxarray(imageslice, Rohan = True,im_show=True))
+
+
 
 
 plt.imshow(imageslice)
