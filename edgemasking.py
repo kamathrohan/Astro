@@ -4,8 +4,9 @@ from astropy.io import fits
 from tqdm import tqdm
 import cv2 as cv2
 import scipy.ndimage.morphology as sp
+import scipy.stats as sps
 
-def edgemasking(data,xstart,xend,ystart,yend):
+def edgemasking(data, splice_y, splice_x, ystart, yend, xstart, xend):
     """
     :param data: image whose edges need to be masked
     :param xstart: starting value of edges (x axis)
@@ -15,8 +16,8 @@ def edgemasking(data,xstart,xend,ystart,yend):
     :return: masked image
     """
     array = np.copy(data)
-    for i in range(xstart,xend):
-        for j in range(ystart,yend):
+    for i in range(splice_y + ystart, splice_y + yend):
+        for j in range(splice_x + xstart, splice_x + xend):
             array[i][j] = 3421
     return array
 
@@ -71,20 +72,20 @@ def auto_canny(image, sigma=0.01):
     edges = cv2.Canny(image, lower, upper)
     return edges
 
-def sourcedetection(image, threshold = 3421, sigma = 0.01, fill = False):
+def sourcedetection(image, threshold = 3421, sigma = 0.33, fill = False):
     """
     :param image: image to find edges from
     :param threshold: background threshold to blanket subtract
     :param sigma: for autocanny
     :return:
     """
-    kernel = np.ones((5, 5), np.uint8)
+    kernel = np.ones((5,5), np.uint8)
     imageslice = backgroundremoval(image, threshold)
-    #dilate = cv2.dilate(imageslice, kernel)
-    #erode = cv2.erode(dilate, kernel)
-    closing = cv2.morphologyEx(imageslice, cv2.MORPH_CLOSE, kernel)
-    #blurred = cv2.GaussianBlur(closing, (5,5), 0)
-    edges = auto_canny(np.uint8(closing), sigma)
+    dilate = cv2.dilate(imageslice, kernel)
+    erode = cv2.erode(dilate, kernel)
+    closing = cv2.morphologyEx(erode, cv2.MORPH_CLOSE, kernel)
+    blurred = cv2.GaussianBlur(closing, (5,5), 0)
+    edges = auto_canny(np.uint8(blurred), sigma)
     if fill == True:
         edges = 255*sp.binary_fill_holes(edges).astype(int)
     return edges
@@ -138,21 +139,23 @@ def contour_coordinates(image, all = False, Rohan = False, im_show = False):
 
 def fluxcalculation(data,edges):
     """
-
     :param data: image file
     :param edges: edges files with 0/255
     :return: flux count
     """
     flux =  0
+    min = np.min(data)
     for i in range(np.shape(edges)[0]):
         for j in range(np.shape(edges)[1]):
-            if edges[i][j] == 255 :
-                flux = flux + data[i][j]
+            if edges[i][j] == 255 and min < 3421:
+                flux = flux + data[i][j] - 3421
+            else:
+                flux = flux + data[i][j] - min
     return flux
 
 
 
-def fluxarray(image, Rohan = False):
+def fluxarray(image, Rohan = False, im_show = False):
 
     """
     :param image: image to find galaxy in
@@ -160,10 +163,23 @@ def fluxarray(image, Rohan = False):
     :return: array of flux values
     """
     edges = np.uint8(sourcedetection(image, fill=True))
-    rsx, rex, rsy, rey = contour_coordinates(edges, all=True, Rohan=Rohan, im_show=False)
+    rsx, rex, rsy, rey = contour_coordinates(edges, all=True, Rohan=Rohan, im_show=im_show)
     fluxvalues = []
     for i in range(len(rsx)):
         galaxy = image[rsy[i]:rey[i], rsx[i]:rex[i]]
         edges = np.uint8(sourcedetection(galaxy, fill=True))
         fluxvalues.append(fluxcalculation(galaxy, edges))
     return fluxvalues
+
+
+def magnitudes(fluxarray,magzpt):
+    """
+    calculate instrumental magnitudes and convert to calibrated magnitude
+    """
+    mag_i =[]
+    mags = []
+    for i in range(len(fluxarray)):
+        mag_i.append(-2.5* np.log10(fluxarray[i]))
+        for j in range(len(mag_i)):
+            mags.append(mag_i[j]+magzpt)
+    return mags

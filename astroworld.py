@@ -14,9 +14,9 @@ magzpt = hdulist[0].header['MAGZPT']
 magzrr = hdulist[0].header ['MAGZRR']
 
 #mask edges of image "region_5"
-newimage = em.edgemasking(image,0,4611,0,100)
-newimage = em.edgemasking(newimage,0,4611,2470,2570)
-newimage = em.edgemasking(newimage,4511,4611,0,2570)
+newimage = em.edgemasking(image,0,0,0,4611,0,100)
+newimage = em.edgemasking(newimage,0,0,0,4611,2470,2570)
+newimage = em.edgemasking(newimage,0,0,4511,4611,0,2570)
 
 #data split by regions by interest
 region_1 = newimage[2900:3500, 1200:1700] #main star and main star diffraction
@@ -30,20 +30,25 @@ edges_1 = em.sourcedetection(region_1)
 edges_2 = em.sourcedetection(region_2)
 edges_3 = em.sourcedetection(region_3)
 edges_4 = em.sourcedetection(region_4)
-edges_random = np.uint8(em.sourcedetection(newimage[200:400,200:400],fill = True))
+#edges_random = np.uint8(em.sourcedetection(newimage[200:400,200:400], fill = True))
+
 
 smooth = 255*sp.binary_fill_holes(edges_3, structure=np.ones((2,2))).astype(int)
-smooth_final = np.uint8(smooth)
+smooth1_region3 = np.uint8(smooth)
+rsx,rex,rsy,rey = em.contour_coordinates(smooth1_region3, all = False, im_show=False)
 
-#idex 202 is main star in region 3
+#mask1_region1  =
+mask1_region3 = em.edgemasking(newimage, 2100, 600, rsy[0], rey[0], rsx[0], rex[0])
 
-rsx,rex,rsy,rey = em.contour_coordinates(smooth_final, all = True, Rohan = True, im_show=True)
-#print(rsx)
+smooth = 255*sp.binary_fill_holes(edges_1, structure=np.ones((3,3))).astype(int)
+smooth_region1 = np.uint8(smooth)
+rsx, rex, rsy, rey = em.contour_coordinates(smooth_region1, all = True, im_show = True)
 
 
-linda = em.edgemasking(region_3, rsy[0],rey[0], rsx[0], rex[0])
+plt.imshow(edges_1)
+plt.show()
 
-
+"""
 
 fig = plt.figure()
 ax1 = fig.add_subplot(2,2,1)
@@ -53,7 +58,7 @@ ax2.imshow(region_3)
 ax3 = fig.add_subplot(2,2,3)
 ax3.imshow(linda)
 plt.show()
-
+"""
 
 
 
