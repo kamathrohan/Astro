@@ -6,7 +6,7 @@ import cv2 as cv2
 import scipy.ndimage.morphology as sp
 import scipy.stats as sps
 
-def edgemasking(data, splice_y, splice_x, ystart, yend, xstart, xend):
+def masking(data, splice_y, splice_x, ystart, yend, xstart, xend, a_lot = False):
     """
     :param data: image whose edges need to be masked
     :param xstart: starting value of edges (x axis)
@@ -16,10 +16,17 @@ def edgemasking(data, splice_y, splice_x, ystart, yend, xstart, xend):
     :return: masked image
     """
     array = np.copy(data)
-    for i in range(splice_y + ystart, splice_y + yend):
-        for j in range(splice_x + xstart, splice_x + xend):
-            array[i][j] = 3421
-    return array
+    if a_lot == True:
+        for x in range(len(xstart)):
+            for i in range(splice_y + ystart[x], splice_y + yend[x]):
+                for j in range(splice_x + xstart[x], splice_x + xend[x]):
+                    array[i][j] = 3421
+        return array
+    else:
+        for i in range(splice_y + ystart, splice_y + yend):
+            for j in range(splice_x + xstart, splice_x + xend):
+                array[i][j] = 3421
+        return array
 
 def backgrounddetection(data,threshold):
     """
@@ -153,8 +160,6 @@ def fluxcalculation(data,edges):
                 flux = flux + data[i][j] - min
     return flux
 
-
-
 def fluxarray(image, Rohan = False, im_show = False):
 
     """
@@ -183,3 +188,22 @@ def magnitudes(fluxarray,magzpt):
         for j in range(len(mag_i)):
             mags.append(mag_i[j]+magzpt)
     return mags
+
+
+def producecatalogue(image,ystart, yend, xstart, xend, splice_y = 0, splice_x = 0, catalogue = []):
+    """
+    :param image: entire image
+    :param catalogue: list of 4d azarrays containing information about the bounding box around detected object
+    :param splice_y: y coordinate if detected object comes from image splice
+    :param splice_x: x coordinate if detected object comes from image splice
+    :param xstart, xend: width of bounding boxes
+    :param ystart, yend: length of bounding boxes
+    """
+    data = np.copy(iamge)
+    for i in range(len(xstart)):
+        catalogue.append(splice_y + ystart[i], splice_y + yend[i], splice_x + xstart[i], splice_x + xend[i])
+        masked = masking(data, splice_y, splice_x, ystart[i], yend[i], xstart[i], xend[i])
+    return masked, catalogue
+
+def classify(data):
+    if data
