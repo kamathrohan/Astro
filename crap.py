@@ -1,7 +1,7 @@
 import numpy as np
 from astropy.io import fits
 import matplotlib.pyplot as plt
-import edgemasking as em
+import utils
 import scipy.ndimage.morphology as sp
 
 
@@ -23,7 +23,5 @@ print(fluxmaster)
 """
 
 imageslice = image[100:1000,100:1000]
-plt.imshow(imageslice)
-plt.show()
-print(em.fluxarray(imageslice, Rohan = True,im_show=True))
+print(utils.fluxarray(imageslice, Rohan = True,im_show=False))
 
