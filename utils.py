@@ -206,4 +206,4 @@ def producecatalogue(image,ystart, yend, xstart, xend, splice_y = 0, splice_x = 
     return masked, catalogue
 
 def classify(data):
-    if data
+    if data_distribution == 
