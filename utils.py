@@ -235,13 +235,3 @@ def producecatalogue(image,ystart, yend, xstart, xend, splice_y = 0, splice_x = 
         catalogue.append(splice_y + ystart[i], splice_y + yend[i], splice_x + xstart[i], splice_x + xend[i])
         masked = masking(data, splice_y, splice_x, ystart[i], yend[i], xstart[i], xend[i])
     return masked, catalogue
-
-"""
-def classify(data):
-<<<<<<< HEAD
-    if data_distribution == 
-=======
-    if data
-
-"""
->>>>>>> 75bd11a9be9d13687f866ae738ac50381c56103b
