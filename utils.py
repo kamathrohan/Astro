@@ -160,6 +160,39 @@ def fluxcalculation(data,edges):
                 flux = flux + data[i][j] - min
     return flux
 
+
+def fluxcalculationnormalnoise(data,edges):
+    """
+    :param data: image file
+    :param edges: edges files with 0/255
+    :return: flux count
+    """
+    flux =  0
+    min = np.min(data)
+    for i in range(np.shape(edges)[0]):
+        for j in range(np.shape(edges)[1]):
+            if edges[i][j] == 255:
+                flux = flux + data[i][j] - np.random.normal(3421,16)
+    return np.int(flux)
+
+def fluxcalculation2(data,edges):
+    """
+    :param data: image file
+    :param edges: edges files with 0/255
+    :return: flux count
+    """
+    star =  []
+    background = []
+    for i in range(np.shape(edges)[0]):
+        for j in range(np.shape(edges)[1]):
+            if edges[i][j] == 255:
+                star.append(data[i][j])
+            else:
+                background.append(data[i][j])
+    backgroundmean = np.average(background)
+    flux = np.sum([i- backgroundmean for i in star])
+    return flux
+
 def fluxarray(image, Rohan = False, im_show = False):
 
     """
@@ -173,9 +206,8 @@ def fluxarray(image, Rohan = False, im_show = False):
     for i in range(len(rsx)):
         galaxy = image[rsy[i]:rey[i], rsx[i]:rex[i]]
         edges = np.uint8(sourcedetection(galaxy, fill=True))
-        fluxvalues.append(fluxcalculation(galaxy, edges))
+        fluxvalues.append(fluxcalculationnormalnoise(galaxy, edges))
     return fluxvalues
-
 
 def magnitudes(fluxarray,magzpt):
     """
@@ -188,7 +220,6 @@ def magnitudes(fluxarray,magzpt):
         for j in range(len(mag_i)):
             mags.append(mag_i[j]+magzpt)
     return mags
-
 
 def producecatalogue(image,ystart, yend, xstart, xend, splice_y = 0, splice_x = 0, catalogue = []):
     """
@@ -205,5 +236,12 @@ def producecatalogue(image,ystart, yend, xstart, xend, splice_y = 0, splice_x = 
         masked = masking(data, splice_y, splice_x, ystart[i], yend[i], xstart[i], xend[i])
     return masked, catalogue
 
+"""
 def classify(data):
+<<<<<<< HEAD
     if data_distribution == 
+=======
+    if data
+
+"""
+>>>>>>> 75bd11a9be9d13687f866ae738ac50381c56103b
