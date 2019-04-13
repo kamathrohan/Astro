@@ -160,6 +160,7 @@ def fluxcalculation(data,edges):
                 flux = flux + data[i][j] - min
     return flux
 
+
 def fluxcalculationnormalnoise(data,edges):
     """
     :param data: image file
@@ -237,6 +238,10 @@ def producecatalogue(image,ystart, yend, xstart, xend, splice_y = 0, splice_x = 
 
 """
 def classify(data):
+<<<<<<< HEAD
+    if data_distribution == 
+=======
     if data
 
 """
+>>>>>>> 75bd11a9be9d13687f866ae738ac50381c56103b
