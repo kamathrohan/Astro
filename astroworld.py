@@ -30,10 +30,10 @@ region_4 = newimage[3000:3900, 2100:2400] #stars region 2
 
 
 
-edges_1 = sourcedetection(region_1)
-edges_2 = sourcedetection(region_2)
-edges_3 = sourcedetection(region_3)
-edges_4 = sourcedetection(region_4)
+
+
+
+
 #edges_random = np.uint8(em.sourcedetection(newimage[200:400,200:400], fill = True))
 
 """
@@ -43,7 +43,7 @@ Preprocessing: Masking Region 1 (main star and main star diffraction)
 ==========================================================================================================
 """
 
-
+edges_1 = sourcedetection(region_1)
 smooth = 255*sp.binary_fill_holes(edges_1, structure=np.ones((3,3))).astype(int)
 smooth_region1 = np.uint8(smooth)
 rsx, rex, rsy, rey = contour_coordinates(smooth_region1, all = True, im_show = False)
@@ -54,7 +54,7 @@ mask_1 = masking(newimage,2900, 1200, rsy, rey, rsx, rex, a_lot  = True)
 Preprocessing: Masking Region 2 (bleeding line from main star)
 ==========================================================================================================
 """
-
+edges_2 = sourcedetection(region_2)
 smooth = 255*sp.binary_fill_holes(edges_2, structure = np.ones((2,2))).astype(int)
 smooth_region2 = np.uint8(smooth)
 rsx, rex, rsy, rey = contour_coordinates(smooth_region2, all = True , im_show = False)
@@ -66,7 +66,7 @@ mask_2 = masking(mask_1, 0, 1150, rsy, rey, rsx, rex, a_lot  = True)
 Preprocessing: Masking Region 3 (stars region 1, left under main star)
 ==========================================================================================================
 """
-
+edges_3 = sourcedetection(region_3)
 smooth = 255*sp.binary_fill_holes(edges_3, structure=np.ones((2,2))).astype(int)
 smooth_region3 = np.uint8(smooth)
 rsx,rex,rsy,rey = contour_coordinates(smooth_region3, all = True, im_show= False)
@@ -79,7 +79,7 @@ mask_3 = masking(mask_2, 2100, 600, rsy, rey, rsx, rex, a_lot  = True)
 Preprocessing: Masking Region 4
 ==========================================================================================================
 """
-
+edges_4 = sourcedetection(region_4)
 smooth = 255*sp.binary_fill_holes(edges_4, structure =np.ones((2,2))).astype(int)
 smooth_region4 = np.uint8(smooth)
 rsx,rex,rsy,rey = contour_coordinates(smooth_region4, all = True, im_show= False)
