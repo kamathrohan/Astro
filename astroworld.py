@@ -87,7 +87,9 @@ mask_4 = masking(mask_3, 3000, 2100, rsy, rey, rsx, rex, a_lot = True)
 
 
 
-fig, (ax1, ax2) = plt.subplots(1,2)
+fig, (ax1, ax2) = plt.subplots(1,2)  Could not find a version that satisfies the requirement cv2 (from versions: )
+No matching distribution found for cv2
+
 ax1.imshow(newimage)
 ax1.set_title('Before Masking')
 ax2.imshow(mask_4)
@@ -95,23 +97,11 @@ ax2.set_title('After Masking')
 plt.show()
 
 
-
-
-
 """
 ==========================================================================================================
 Producing catalogue
 ==========================================================================================================
 """
-
-
-
-
-
-
-
-
-
 """
 Useful websites:
 https://www.programcreek.com/python/example/70455/cv2.drawContours

@@ -160,7 +160,6 @@ def fluxcalculation(data,edges):
                 flux = flux + data[i][j] - min
     return flux
 
-
 def fluxcalculationnormalnoise(data,edges):
     """
     :param data: image file
