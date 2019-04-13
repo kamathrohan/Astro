@@ -104,7 +104,6 @@ def contour_coordinates(image, all = False, im_show = False):
     :param Rohan: for rohan's computer
     :return: list of coordinates of contours
     """
-
     contours, hierarchy = cv2.findContours(image, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     rsx = []
     rex = []
@@ -231,8 +230,3 @@ def producecatalogue(image,ystart, yend, xstart, xend, splice_y = 0, splice_x = 
         catalogue.append(splice_y + ystart[i], splice_y + yend[i], splice_x + xstart[i], splice_x + xend[i])
         masked = masking(data, splice_y, splice_x, ystart[i], yend[i], xstart[i], xend[i])
     return masked, catalogue
-<<<<<<< HEAD
-=======
-
-
->>>>>>> f08ce461cc8d2d258d00d8af35877d0ffa2194e2
