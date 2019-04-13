@@ -97,7 +97,7 @@ def sourcedetection(image, threshold = 3421, sigma = 0.33, fill = False):
         edges = 255*sp.binary_fill_holes(edges).astype(int)
     return edges
 
-def contour_coordinates(image, all = False, Rohan = False, im_show = False):
+def contour_coordinates(image, all = False, im_show = False):
     """
     :param image: image to find all countours in
     :param all: if true, returns all, else returns largest one
@@ -105,10 +105,7 @@ def contour_coordinates(image, all = False, Rohan = False, im_show = False):
     :return: list of coordinates of contours
     """
 
-    if Rohan == True:
-        contours, hierarchy = cv2.findContours(image, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-    else:
-        im, contours, hierarchy = cv2.findContours(image, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    contours, hierarchy = cv2.findContours(image, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     rsx = []
     rex = []
     rsy = []
@@ -193,15 +190,14 @@ def fluxcalculation2(data,edges):
     flux = np.sum([i- backgroundmean for i in star])
     return flux
 
-def fluxarray(image, Rohan = False, im_show = False):
+def fluxarray(image, im_show = False):
 
     """
     :param image: image to find galaxy in
-    :param Rohan: is rohan using it?
     :return: array of flux values
     """
     edges = np.uint8(sourcedetection(image, fill=True))
-    rsx, rex, rsy, rey = contour_coordinates(edges, all=True, Rohan=Rohan, im_show=im_show)
+    rsx, rex, rsy, rey = contour_coordinates(edges, all=True, im_show=im_show)
     fluxvalues = []
     for i in range(len(rsx)):
         galaxy = image[rsy[i]:rey[i], rsx[i]:rex[i]]
@@ -235,3 +231,8 @@ def producecatalogue(image,ystart, yend, xstart, xend, splice_y = 0, splice_x = 
         catalogue.append(splice_y + ystart[i], splice_y + yend[i], splice_x + xstart[i], splice_x + xend[i])
         masked = masking(data, splice_y, splice_x, ystart[i], yend[i], xstart[i], xend[i])
     return masked, catalogue
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> f08ce461cc8d2d258d00d8af35877d0ffa2194e2

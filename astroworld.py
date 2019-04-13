@@ -37,7 +37,8 @@ edges_4 = sourcedetection(region_4)
 
 """
 ==========================================================================================================
-Preprocessing: Masking Region 1
+Preprocessing: Masking Region 1 (main star and main star diffraction)
+
 ==========================================================================================================
 """
 
@@ -49,7 +50,7 @@ mask_1 = masking(newimage,2900, 1200, rsy, rey, rsx, rex, a_lot  = True)
 
 """
 ==========================================================================================================
-Preprocessing: Masking Region 2
+Preprocessing: Masking Region 2 (bleeding line from main star)
 ==========================================================================================================
 """
 
@@ -61,7 +62,7 @@ mask_2 = masking(mask_1, 0, 1150, rsy, rey, rsx, rex, a_lot  = True)
 
 """
 ==========================================================================================================
-Preprocessing: Masking Region 3
+Preprocessing: Masking Region 3 (stars region 1, left under main star)
 ==========================================================================================================
 """
 
@@ -101,6 +102,7 @@ mask_4 = masking(mask_3, 3000, 2100, rsy, rey, rsx, rex, a_lot = True)
 
 
 fig, (ax1, ax2) = plt.subplots(1,2)
+
 ax1.imshow(newimage)
 ax1.set_title('Before Masking')
 ax2.imshow(mask_4)
@@ -108,23 +110,11 @@ ax2.set_title('After Masking')
 plt.show()
 
 
-
-
-
 """
 ==========================================================================================================
 Producing catalogue
 ==========================================================================================================
 """
-
-
-
-
-
-
-
-
-
 """
 Useful websites:
 https://www.programcreek.com/python/example/70455/cv2.drawContours
