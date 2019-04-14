@@ -216,7 +216,7 @@ def magnitudes(fluxarray,magzpt):
             mags.append(mag_i[j]+magzpt)
     return mags
 
-def producecatalogue(image,ystart, yend, xstart, xend, splice_y = 0, splice_x = 0, catalogue = []):
+def producecatalogue(image, ystart, yend, xstart, xend, splice_y = 0, splice_x = 0, catalogue = []):
     """
     :param image: entire image
     :param catalogue: list of 4d azarrays containing information about the bounding box around detected object

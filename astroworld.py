@@ -23,17 +23,23 @@ newimage = masking(newimage,0,0,0,4611,2470,2570)
 newimage = masking(newimage,0,0,4511,4611,0,2570)
 
 #data split by regions by interest -->maybe need sum mo
-region_1 = newimage[2900:3500, 1200:1700] #main star and main star diffraction
+region_1 = newimage[3150:3300, 1350:1550] #main star and main star diffraction
 region_2 = newimage[0:4611, 1150:1600] #bleeding line from main star
-region_3 = newimage[2100:2450,600:1100] #stars region 1, left under main star
+region_3 = newimage[2100:2450, 600:1100] #stars region 1, left under main star
 region_4 = newimage[3000:3900, 2100:2400] #stars region 2
 region_5 = newimage[3150:3450, 600:900]
+region_6 = newimage[3369:3650, 1420:1450]
+region_7 = newimage[2700:2840, 950:990]
+plt.imshow(region_7)
+plt.show()
 
 edges_1 = sourcedetection(region_1)
 edges_2 = sourcedetection(region_2)
 edges_3 = sourcedetection(region_3)
 edges_4 = sourcedetection(region_4)
 edges_5 = sourcedetection(region_5)
+edges_6 = sourcedetection(region_6)
+edges_7 = sourcedetection(region_7)
 #edges_random = np.uint8(em.sourcedetection(newimage[200:400,200:400], fill = True))
 
 """
@@ -43,10 +49,10 @@ Preprocessing: Masking Region 1 (main star and main star diffraction)
 """
 
 
-smooth = 255*sp.binary_fill_holes(edges_1, structure=np.ones((3,3))).astype(int)
+smooth = 255*sp.binary_fill_holes(edges_1, structure = np.ones((3,3))).astype(int)
 smooth_region1 = np.uint8(smooth)
 rsx, rex, rsy, rey = contour_coordinates(smooth_region1, all = True, im_show = False)
-mask_1 = masking(newimage,2900, 1200, rsy, rey, rsx, rex, a_lot  = True)
+mask_1 = masking(newimage, 3150, 1350, rsy, rey, rsx, rex, a_lot  = True)
 
 """
 ==========================================================================================================
@@ -66,7 +72,7 @@ Preprocessing: Masking Region 3 (stars region 1, left under main star)
 ==========================================================================================================
 """
 
-smooth = 255*sp.binary_fill_holes(edges_3, structure=np.ones((2,2))).astype(int)
+smooth = 255*sp.binary_fill_holes(edges_3, structure = np.ones((2,2))).astype(int)
 smooth_region3 = np.uint8(smooth)
 rsx,rex,rsy,rey = contour_coordinates(smooth_region3, all = True, im_show= False)
 mask_3 = masking(mask_2, 2100, 600, rsy, rey, rsx, rex, a_lot  = True)
@@ -79,7 +85,7 @@ Preprocessing: Masking Region 4
 ==========================================================================================================
 """
 
-smooth = 255*sp.binary_fill_holes(edges_4, structure =np.ones((2,2))).astype(int)
+smooth = 255*sp.binary_fill_holes(edges_4, structure = np.ones((2,2))).astype(int)
 smooth_region4 = np.uint8(smooth)
 rsx,rex,rsy,rey = contour_coordinates(smooth_region4, all = True, im_show= False)
 mask_4 = masking(mask_3, 3000, 2100, rsy, rey, rsx, rex, a_lot = True)
@@ -92,10 +98,34 @@ Preprocessing: Masking Region 5
 ==========================================================================================================
 """
 
-smooth = 255*sp.binary_fill_holes(edges_5, structure =np.ones((2,2))).astype(int)
+smooth = 255*sp.binary_fill_holes(edges_5, structure = np.ones((2,2))).astype(int)
 smooth_region5 = np.uint8(smooth)
-rsx,rex,rsy,rey = contour_coordinates(smooth_region5, all = False, im_show= True)
+rsx,rex,rsy,rey = contour_coordinates(smooth_region5, all = True, im_show = False)
 mask_5 = masking(mask_4, 3150, 600, rsy, rey, rsx, rex, a_lot = True)
+
+"""
+==========================================================================================================
+Preprocessing: Masking Region 6
+==========================================================================================================
+"""
+
+smooth = 255*sp.binary_fill_holes(edges_6, structure = np.ones((3,3))).astype(int)
+smooth_region6 = np.uint8(smooth)
+rsx,rex,rsy,rey = contour_coordinates(smooth_region5, all = False, im_show= False)
+mask_6 = masking(mask_5, 3369, 1420, rsy, rey, rsx, rex, a_lot = True)
+
+
+
+"""
+==========================================================================================================
+Preprocessing: Masking Region 7
+==========================================================================================================
+"""
+
+smooth = 255*sp.binary_fill_holes(edges_7, structure = np.ones((3,3))).astype(int)
+smooth_region7 = np.uint8(smooth)
+rsx,rex,rsy,rey = contour_coordinates(smooth_region5, all = True, im_show= False)
+mask_7 = masking(mask_6, 2700, 950, rsy, rey, rsx, rex, a_lot = True)
 
 
 
@@ -104,7 +134,7 @@ fig, (ax1, ax2) = plt.subplots(1,2)
 
 ax1.imshow(newimage)
 ax1.set_title('Before Masking')
-ax2.imshow(mask_5)
+ax2.imshow(mask_7)
 ax2.set_title('After Masking')
 plt.show()
 
