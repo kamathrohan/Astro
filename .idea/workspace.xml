@@ -15,7 +15,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/AstronomicalImageProcessing$edgemasking.coverage" NAME="edgemasking Coverage Results" MODIFIED="1552042436447" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AstronomicalImageProcessing$crap.coverage" NAME="crap Coverage Results" MODIFIED="1555154528395" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/AstronomicalImageProcessing$astroworld.coverage" NAME="astroworld Coverage Results" MODIFIED="1555154863663" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/AstronomicalImageProcessing$astroworld.coverage" NAME="astroworld Coverage Results" MODIFIED="1555157096776" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AstronomicalImageProcessing$sourcedetection.coverage" NAME="sourcedetection Coverage Results" MODIFIED="1552321783177" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/AstronomicalImageProcessing$backgrounddetection.coverage" NAME="backgrounddetection Coverage Results" MODIFIED="1552150633734" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -41,10 +41,9 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/astroworld.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-235">
-              <caret line="56" selection-start-line="56" selection-end-line="56" />
+            <state relative-caret-position="165">
+              <caret line="83" column="23" lean-forward="true" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="23" />
               <folding>
-                <element signature="e#2710#2963#1" />
                 <element signature="e#3512#3753#1" />
                 <element signature="e#3763#4055#1" />
               </folding>
@@ -55,8 +54,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
-              <caret line="239" selection-start-line="239" selection-end-line="239" />
+            <state relative-caret-position="275">
+              <caret line="108" column="12" lean-forward="true" selection-start-line="108" selection-start-column="12" selection-end-line="108" selection-end-column="12" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
                 <element signature="e#270#1037#0" />
@@ -65,8 +64,6 @@
                 <element signature="e#1863#2218#0" />
                 <element signature="e#2259#2494#0" />
                 <element signature="e#2574#3169#0" />
-                <element signature="e#3252#5199#0" />
-                <element signature="e#5238#5642#0" />
               </folding>
             </state>
           </provider>
@@ -109,6 +106,8 @@
     <findStrings>
       <find>masking</find>
       <find>np.r</find>
+      <find>rohan</find>
+      <find>cont</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -132,10 +131,10 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="836" />
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="x" value="730" />
+    <option name="width" value="710" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -388,7 +387,7 @@
       <workItem from="1553939389276" duration="1366000" />
       <workItem from="1554041275982" duration="257000" />
       <workItem from="1554996719224" duration="867000" />
-      <workItem from="1555152829128" duration="2680000" />
+      <workItem from="1555152829128" duration="3978000" />
     </task>
     <task id="LOCAL-00001" summary="Added some plots">
       <created>1552039337756</created>
@@ -422,7 +421,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58299000" />
+    <option name="totallyTimeSpent" value="59597000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -434,30 +433,29 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="836" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49129593" visible="true" weight="0.19384836" />
-      <window_info id="Structure" order="1" sideWeight="0.50870407" side_tool="true" visible="true" weight="0.19384836" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.491921" visible="true" weight="0.19384836" />
+      <window_info id="Structure" order="1" sideWeight="0.508079" side_tool="true" visible="true" weight="0.19384836" />
       <window_info id="Favorites" order="2" sideWeight="0.50089127" side_tool="true" weight="0.15522175" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" weight="0.33333334" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" weight="0.2987952" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39919356" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3293011" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3293011" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.32891566" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5007153" side_tool="true" weight="0.33064517" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.30510753" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3048193" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.3293011" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" sideWeight="0.9187621" visible="true" weight="0.28826895" />
-      <window_info anchor="right" x="0" y="0" width="310" height="636" id="Documentation" order="4" sideWeight="0.08123791" side_tool="true" visible="true" weight="0.28826895" />
+      <window_info anchor="right" id="SciView" order="3" sideWeight="0.9174147" visible="true" weight="0.28826895" />
+      <window_info anchor="right" x="0" y="0" width="310" height="636" id="Documentation" order="4" sideWeight="0.082585275" side_tool="true" visible="true" weight="0.28826895" />
       <window_info anchor="right" id="Database" order="5" sideWeight="0.57930106" weight="0.3297568" />
     </layout>
     <layout-to-restore>
@@ -548,8 +546,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="239" selection-start-line="239" selection-end-line="239" />
+        <state relative-caret-position="275">
+          <caret line="108" column="12" lean-forward="true" selection-start-line="108" selection-start-column="12" selection-end-line="108" selection-end-column="12" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#270#1037#0" />
@@ -558,18 +556,15 @@
             <element signature="e#1863#2218#0" />
             <element signature="e#2259#2494#0" />
             <element signature="e#2574#3169#0" />
-            <element signature="e#3252#5199#0" />
-            <element signature="e#5238#5642#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/astroworld.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-235">
-          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        <state relative-caret-position="165">
+          <caret line="83" column="23" lean-forward="true" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="23" />
           <folding>
-            <element signature="e#2710#2963#1" />
             <element signature="e#3512#3753#1" />
             <element signature="e#3763#4055#1" />
           </folding>
