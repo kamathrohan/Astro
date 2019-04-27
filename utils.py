@@ -235,8 +235,19 @@ def catalogue(image, magzpt, splice_y = 0, splice_x = 0, im_show = False):
         yends.append(splice_y + rey[i])
         galaxy = image[rsy[i]:rey[i], rsx[i]:rex[i]]
         edges = np.uint8(sourcedetection(galaxy, fill=True))
-<<<<<<< HEAD
-        flux.append(fluxcalculationnormalnoise(galaxy, edges))
+        f = fluxcalculationnormalnoise(galaxy, edges)
+        if f ==0
+            f = np.sum(galaxy)
+        flux.append(f)
+        """
+        if f ==0:
+            pass
+        else:
+            flux.append(f)
+        
+        """
+
+
     for j in range(len(flux)):
         """
         calculate instrumental magnitudes and convert to calibrated magnitude
@@ -245,7 +256,7 @@ def catalogue(image, magzpt, splice_y = 0, splice_x = 0, im_show = False):
     for z in range(len(mag_i)):
         mags.append(mag_i[z]+magzpt)
     return flux, xstarts, xends, ystarts, yends, mags
-=======
+
         flux = fluxcalculationnormalnoise(galaxy, edges)
         if flux == 0:
             flux = np.sum(galaxy)
