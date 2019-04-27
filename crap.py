@@ -22,6 +22,6 @@ print(fluxmaster)
 
 """
 
-imageslice = image[100:1000,100:1000]
-print(utils.fluxarray(imageslice, Rohan = True,im_show=False))
+imageslice = image[100:300,100:300]
+print(utils.fluxarray(imageslice,im_show=True))
 
