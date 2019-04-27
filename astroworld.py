@@ -113,9 +113,7 @@ smooth_region7 = np.uint8(smooth)
 rsx,rex,rsy,rey = contour_coordinates(smooth_region5, all = True, im_show= False)
 mask_7 = masking(mask_6, 2700, 950, rsy, rey, rsx, rex, a_lot = True)
 
-
-
-
+"""
 fig, (ax1, ax2) = plt.subplots(1,2)
 
 ax1.imshow(newimage)
@@ -123,13 +121,19 @@ ax1.set_title('Before Masking')
 ax2.imshow(mask_7)
 ax2.set_title('After Masking')
 plt.show()
-
+"""
 
 """
 ==========================================================================================================
 Producing catalogue
 ==========================================================================================================
 """
+
+flux, xstarts, xends, ystarts, yends, mags = catalogue(mask_7, magzpt)
+print(mags)
+
+
+
 """
 Useful websites:
 https://www.programcreek.com/python/example/70455/cv2.drawContours

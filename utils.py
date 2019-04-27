@@ -190,7 +190,7 @@ def fluxcalculation2(data,edges):
     flux = np.sum([i- backgroundmean for i in star])
     return flux
 
-def fluxarray(image, im_show = False):
+def catalogue(image, magzpt, splice_y = 0, splice_x = 0, im_show = False):
 
     """
     :param image: image to find galaxy in
@@ -198,38 +198,26 @@ def fluxarray(image, im_show = False):
     """
     edges = np.uint8(sourcedetection(image, fill=True))
     rsx, rex, rsy, rey = contour_coordinates(edges, all=True, im_show=im_show)
-    fluxvalues = []
-    for i in range(len(rsx)):
+    xstarts = []
+    xends = []
+    ystarts = []
+    yends = []
+    flux = []
+    mag_i = []
+    mags= []
+    for i in tqdm(range(len(rsx))):
+        xstarts.append(splice_x + rsx[i])
+        xends.append(splice_x + rex[i])
+        ystarts.append(splice_y + rsy[i])
+        yends.append(splice_y + rey[i])
         galaxy = image[rsy[i]:rey[i], rsx[i]:rex[i]]
         edges = np.uint8(sourcedetection(galaxy, fill=True))
-        fluxvalues.append(fluxcalculationnormalnoise(galaxy, edges))
-    return fluxvalues
-
-def magnitudes(fluxarray,magzpt):
-    """
-    calculate instrumental magnitudes and convert to calibrated magnitude
-    """
-    mag_i =[]
-    mags = []
-    for i in range(len(fluxarray)):
-        mag_i.append(-2.5* np.log10(fluxarray[i]))
-        for j in range(len(mag_i)):
-            mags.append(mag_i[j]+magzpt)
-    return mags
-
-def producecatalogue(image, ystart, yend, xstart, xend, splice_y = 0, splice_x = 0, catalogue = []):
-    """
-    :param image: entire image
-    :param catalogue: list of 4d azarrays containing information about the bounding box around detected object
-    :param splice_y: y coordinate if detected object comes from image splice
-    :param splice_x: x coordinate if detected object comes from image splice
-    :param xstart, xend: width of bounding boxes
-    :param ystart, yend: length of bounding boxes
-    """
-    data = np.copy(iamge)
-    for i in range(len(xstart)):
-        catalogue.append(splice_y + ystart[i], splice_y + yend[i], splice_x + xstart[i], splice_x + xend[i])
-        masked = masking(data, splice_y, splice_x, ystart[i], yend[i], xstart[i], xend[i])
-    return masked, catalogue
-
-
+        flux.append(fluxcalculationnormalnoise(galaxy, edges))
+    for j in range(len(flux)):
+        """
+        calculate instrumental magnitudes and convert to calibrated magnitude
+        """
+        mag_i.append(-2.5* np.log10(flux[j]))
+    for z in range(len(mag_i)):
+        mags.append(mag_i[z]+magzpt)
+    return flux, xstarts, xends, ystarts, yends, mags
