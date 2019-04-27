@@ -113,6 +113,8 @@ smooth_region7 = np.uint8(smooth)
 rsx,rex,rsy,rey = contour_coordinates(smooth_region5, all = True, im_show= False)
 mask_7 = masking(mask_6, 2700, 950, rsy, rey, rsx, rex, a_lot = True)
 
+
+np.savetxt("masked.txt",mask_7)
 """
 fig, (ax1, ax2) = plt.subplots(1,2)
 
