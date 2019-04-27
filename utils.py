@@ -235,19 +235,7 @@ def catalogue(image, magzpt, splice_y = 0, splice_x = 0, im_show = False):
         yends.append(splice_y + rey[i])
         galaxy = image[rsy[i]:rey[i], rsx[i]:rex[i]]
         edges = np.uint8(sourcedetection(galaxy, fill=True))
-        f = fluxcalculationnormalnoise(galaxy, edges)
-        if f ==0
-            f = np.sum(galaxy)
-        flux.append(f)
-        """
-        if f ==0:
-            pass
-        else:
-            flux.append(f)
-        
-        """
-
-
+        flux.append(fluxcalculationnormalnoise(galaxy, edges))
     for j in range(len(flux)):
         """
         calculate instrumental magnitudes and convert to calibrated magnitude
@@ -256,39 +244,3 @@ def catalogue(image, magzpt, splice_y = 0, splice_x = 0, im_show = False):
     for z in range(len(mag_i)):
         mags.append(mag_i[z]+magzpt)
     return flux, xstarts, xends, ystarts, yends, mags
-
-        flux = fluxcalculationnormalnoise(galaxy, edges)
-        if flux == 0:
-            flux = np.sum(galaxy)
-        fluxvalues.append(flux)
-    return fluxvalues
-
-def magnitudes(fluxarray,magzpt):
-    """
-    calculate instrumental magnitudes and convert to calibrated magnitude
-    """
-    mag_i =[]
-    mags = []
-    for i in range(len(fluxarray)):
-        mag_i.append(-2.5* np.log10(fluxarray[i]))
-    for j in range(len(mag_i)):
-            mags.append(mag_i[j]+magzpt)
-    return mags
-
-def producecatalogue(image, ystart, yend, xstart, xend, splice_y = 0, splice_x = 0, catalogue = []):
-    """
-    :param image: entire image
-    :param catalogue: list of 4d azarrays containing information about the bounding box around detected object
-    :param splice_y: y coordinate if detected object comes from image splice
-    :param splice_x: x coordinate if detected object comes from image splice
-    :param xstart, xend: width of bounding boxes
-    :param ystart, yend: length of bounding boxes
-    """
-    data = np.copy(iamge)
-    for i in range(len(xstart)):
-        catalogue.append(splice_y + ystart[i], splice_y + yend[i], splice_x + xstart[i], splice_x + xend[i])
-        masked = masking(data, splice_y, splice_x, ystart[i], yend[i], xstart[i], xend[i])
-    return masked, catalogue
-
-
->>>>>>> db17ff09c2ba8b710359f1514b4429c59b9cbf5c
