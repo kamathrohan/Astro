@@ -1,8 +1,10 @@
 import numpy as np
 from astropy.io import fits
 import matplotlib.pyplot as plt
-import utils
+from utils import *
 import scipy.ndimage.morphology as sp
+from matplotlib.colors import LogNorm
+
 
 
 hdulist = fits.open("A1_mosaic.fits")
@@ -22,6 +24,11 @@ print(fluxmaster)
 
 """
 
-imageslice = image[100:300,100:300]
-print(utils.fluxarray(imageslice,im_show=True))
+masked = image[700:900, 700:900]
+plt.imshow(masked, norm = LogNorm())
+plt.show()
+
+flux, xstarts, xends, ystarts, yends, mags = catalogue(masked, magzpt, im_show=True)
+print(mags)
+
 

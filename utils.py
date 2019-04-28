@@ -237,8 +237,10 @@ def catalogue(image, magzpt, splice_y = 0, splice_x = 0, im_show = False):
         edges = np.uint8(sourcedetection(galaxy, fill=True))
         f = fluxcalculationnormalnoise(galaxy, edges)
         if f ==0:
-            f = np.sum(galaxy)
+            f = np.sum(galaxy-4)
         flux.append(f)
+
+
 
     for j in range(len(flux)):
         """
