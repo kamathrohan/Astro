@@ -240,12 +240,12 @@ def catalogue(image, magzpt, splice_y = 0, splice_x = 0, im_show = False):
             #f = np.sum(galaxy)
             #-np.abs((rex[i]-rsx[i])*(rey[i]-rsy[i]))*np.random.normal(3421,16)
         #flux.append(f)
-        if f == 0:
-            pass
-        elif f < 0:
-            pass
-        else:
-            flux.append(f)
+        #if f == 0:
+            #pass
+        #elif f < 0:
+            #pass
+        #else:
+        flux.append(f)
 
     for j in range(len(flux)):
         """

@@ -25,3 +25,4 @@ print(fluxmaster)
 imageslice = image[100:300,100:300]
 print(utils.fluxarray(imageslice,im_show=True))
 
+with open()

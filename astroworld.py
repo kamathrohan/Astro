@@ -4,10 +4,10 @@ from astropy.io import fits
 import cv2
 import matplotlib.pyplot as plt
 import scipy.ndimage.morphology as sp
+import csv
 
 #print entire arrays
 np.set_printoptions(threshold=np.nan)
-
 
 # Le file avec le image
 hdulist = fits.open("A1_mosaic.fits")
@@ -132,8 +132,18 @@ Producing catalogue
 """
 
 flux, xstarts, xends, ystarts, yends, mags = catalogue(mask_7, magzpt)
-print(mags)
+print(xstarts[0], xends[0], ystarts[0], yends[0])
 
+#print(mags)
+#rows = zip(flux,mags)
+
+"""
+with open('catalogue.csv', 'w') as csvFile:
+    writer = csv.writer(csvFile)
+    writer.writerows(rows)
+
+csvFile.close()
+"""
 
 
 """
