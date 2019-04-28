@@ -4,6 +4,7 @@ from astropy.io import fits
 import cv2
 import matplotlib.pyplot as plt
 import scipy.ndimage.morphology as sp
+import csv
 
 #print entire arrays
 np.set_printoptions(threshold=np.nan)
@@ -114,6 +115,7 @@ rsx,rex,rsy,rey = contour_coordinates(smooth_region5, all = True, im_show= False
 mask_7 = masking(mask_6, 2700, 950, rsy, rey, rsx, rex, a_lot = True)
 
 
+np.savetxt("masked.txt",mask_7)
 """
 fig, (ax1, ax2) = plt.subplots(1,2)
 
@@ -131,7 +133,10 @@ Producing catalogue
 """
 
 flux, xstarts, xends, ystarts, yends, mags = catalogue(mask_7, magzpt)
-print(mags)
+print(xstarts[0], xends[0], ystarts[0], yends[0])
+
+#print(mags)
+#rows = zip(flux,mags)
 
 hist = np.histogram(mags,bins = )
 

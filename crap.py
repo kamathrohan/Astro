@@ -32,3 +32,4 @@ flux, xstarts, xends, ystarts, yends, mags = catalogue(masked, magzpt, im_show=T
 print(mags)
 
 
+with open()
